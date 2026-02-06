@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomboid survivor</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+        #game-conteiner {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid white;
+            background-color: #222;
+            border-radius: 10px;
+        }
+        img {
+            width: 80%;
+            border-radius: 10px;
+        }
+        .escolha {
+            text-align: center;
+            display: block;
+            margin: 10px;
+            padding: 10px;
+            width: 80%;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: darkred;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-conteiner">
+        <h2 id="title">Fuga dos zumbis</h2>
+        <img src="zumbis_na_janela.png" alt="cenaDaJanela">
+        <p id="historia">Você acorda na sua casa sozinho, você olha pela janela e percebe que está cercado de zumbis.</p>
+        <button class="escolha" onclick="choice ('correr')">Sair correndo.</button>
+        <button class="escolha" onclick="choice ('sair')">Passar por zumbis agachado.</button>
+    </div>
+    <script>
+        function choice(opcao){
+            let titulo = document.getElementById("title");
+            let imagem = document.getElementById("scene");
+            let historia = document.getElementById("story");
+            let botoes = document.querySelectorAll(".escolha");
+
+            if (opcao === 'correr') {
+                titulo.innerText = "Sair correndo";
+                imagem.src = "correr.png";
+                historia.innerText = "Você correu um monte, mais está cansado e cercado de zumbis, oque você quer fazer?";
+                botoes[0].innerText = "Pular a cerca.";
+                botoes[0].setAttribute("onclick",choice('pularACerca'));
+                botoes[1].innerText = "Lutar";
+                botoes[1].setAttribute = ("onclick",choice('lutar'));
+            }
+                
+            else if (opcao === 'sair'){
+                titulo.innerText = "Passar por zumbis tentando não ser visto.";
+                imagem.src = "sneak.jpg";
+                historia.innerText = "Você passa pelos zumbis sem ser visto, oque você quer fazer?";
+                botoes[0].innerText = "procurar pessoas.";
+                botoes[0].setAttribute("onclick",choice('procurarPessoas'));
+                botoes[1].innerText = "Ir atrás de armas";
+                botoes[1].setAttribute = ("onclick",choice('irAtrasDeArmas'));
+            }
+            else if (opcao === 'pularACerca'){
+                titulo.innerText = "Pular a cerca para fugir.";
+                imagem.src = "fence.jpg";
+                historia.innerText = "Você pula a cerca, e consegue fugir para uma cabana. Fim do jogo";
+                botoes.forEach(botao =>style.dysplay = "none");
+            }
+            else if (opcao === 'lutar'){
+                titulo.innerText = "Lutar contra os zumbis.";
+                imagem.src = "fighting.jpg";
+                historia.innerText = "Você luta contra os zumbis, mais tem muitos e acaba morrendo. Fim do jogo";
+                botoes.forEach(botao =>style.dysplay = "none");
+            }
+            else if (opcao === 'procurarPessoas'){
+                titulo.innerText = "Ir atras de pessoas.";
+                imagem.src = "";
+                historia.innerText = "Você acha um grupo de pessoas e consegue sobreviver. Fim do jogo";
+                botoes.forEach(botao =>style.dysplay = "none");
+            }
+            else if (opcao === 'irAtrasDearmas.'){
+                titula.innerText = "Ir atras de armas.";
+                imagem.src = "";
+                historia.innerText = "Você acha uma delegacia cheia de armas mais tem varios zumbis de cercando. Fim de jogo";
+                botoes.forEach(botao =>style.dysplay = "none");
+            }
+        }
+    </script>
+</body>
+</html>
